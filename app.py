@@ -10,6 +10,12 @@ from data.schemes import SCHEMES
 import urllib.parse
 from data.crops import CROP_DATA, DEFAULT_CROPS
 from utils.auth import signup, login, save_user_data, get_user_data
+import streamlit as st
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+if "user_input" not in st.session_state:
+    st.session_state.user_input = ""
+
 # ── Page Config (MUST be first Streamlit call) ────────────
 st.set_page_config(page_title="FarmGPT 🌾", page_icon="🌾", layout="wide")
 
