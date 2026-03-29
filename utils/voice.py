@@ -15,7 +15,7 @@ def speak(text, language="English"):
 
         lang_code = lang_map.get(language, "en")
 
-        clean = text.strp()
+        clean = text.strip()
 
         clean = clean.strip()
         if not clean:
