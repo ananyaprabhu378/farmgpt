@@ -15,19 +15,39 @@ def save_users(users):
 
 def signup(username, password):
     users = load_users()
+
+    # 🧼 CLEAN INPUT (VERY IMPORTANT)
+    username = username.strip().lower()
+    password = password.strip()
+
     if username in users:
         return False
+
     users[username] = {
         "password": password,
         "data": []
     }
+
     save_users(users)
     return True
 
 def login(username, password):
-    users = load_users()
-    if username in users and users[username]["password"] == password:
-        return True
+    import json
+
+    # 🧼 Clean input (IMPORTANT for mobile)
+    username = username.strip().lower()
+    password = password.strip()
+
+    try:
+        with open("users.json", "r") as f:
+            users = json.load(f)
+    except:
+        return False
+
+    # 🔍 Check credentials
+    if username in users:
+        return users[username]["password"] == password
+
     return False
 
 def save_user_data(username, entry):
