@@ -21,7 +21,7 @@ def speak(text, language="English"):
         if not clean:
             return
 
-        tts = gTTS(text=clean, lang=lang_code, slow=False)
+        tts = gTTS(text=clean, lang=lang_code, tld="co.in")
 
         with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as f:
             fname = f.name
