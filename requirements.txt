@@ -6,3 +6,4 @@ SpeechRecognition
 sounddevice
 soundfile
 newsapi-python
+gtts
