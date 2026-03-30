@@ -1,9 +1,32 @@
-from gtts import gTTS
+ffrom gtts import gTTS
 import tempfile
 import streamlit as st
 
 def speak(text, language="English"):
     try:
+        # 🚨 IMPORTANT: stop if empty / None
+        if not text:
+            st.warning("⚠️ No text received for speech")
+            return
+
+        # 🧠 Convert to string safely
+        text = str(text)
+
+        # 🧼 Clean text properly
+        clean = ""
+        for char in text:
+            if char.isalnum() or char.isspace():
+                clean += char
+            else:
+                clean += " "
+
+        clean = clean.strip()
+
+        # 🚨 STILL EMPTY → STOP
+        if not clean:
+            st.warning("⚠️ Text became empty after cleaning")
+            return
+
         # 🧠 Language mapping
         lang_map = {
             "English": "en",
@@ -16,19 +39,7 @@ def speak(text, language="English"):
 
         lang_code = lang_map.get(language, "en")
 
-        # 🧼 Ensure text is string
-        if not isinstance(text, str):
-            text = str(text)
-
-        clean = text.strip()
-
-        if not clean:
-            return
-
-        # 🔥 Remove emojis (important for better voice)
-        clean = clean.encode("ascii", "ignore").decode() if language == "English" else clean
-
-        # 🎤 Generate voice
+        # 🎤 Generate speech
         tts = gTTS(text=clean, lang=lang_code, tld="co.in")
 
         with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as f:
@@ -36,7 +47,7 @@ def speak(text, language="English"):
 
         tts.save(fname)
 
-        # 🔊 Play in Streamlit
+        # 🔊 Play audio
         st.audio(fname)
 
     except Exception as e:
