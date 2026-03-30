@@ -705,7 +705,28 @@ with st.sidebar:
                 df = pd.DataFrame(crop_info.get("calendar", []))
 
                 if not df.empty:
-                    st.dataframe(df, use_container_width=True)
+                    #st.dataframe(df, use_container_width=True)
+                    from utils.llm import get_llm_response
+
+                    calendar_data = crop_info.get("calendar", [])
+
+                    if calendar_data:
+                        # Convert to text
+                        calendar_text = ""
+                        for item in calendar_data:
+                            calendar_text += f"{item['month']} - {item['activity']}, Temp: {item.get('temp','')}, Rainfall: {item.get('rainfall','')}\n"
+
+                        # 🔥 Translate using AI
+                        prompt = f"""
+                        Translate the following farming calendar into {st.session_state.language}.
+                        Keep it simple and clear.
+
+                        {calendar_text}
+                        """
+
+                        translated = get_llm_response(prompt)
+
+                        st.write(translated)
                 else:
                     st.warning("No calendar data available")
 
