@@ -703,36 +703,42 @@ with st.sidebar:
                 # 📊 TABLE (REAL DATA)
                 import pandas as pd
                 
+                
                 lang = st.session_state.language
 
                 calendar_data = crop_info.get("calendar", [])
 
                 if calendar_data:
+
+                    table_data = []
+
                     for item in calendar_data:
 
-                        # ✅ SAFE HANDLING (THIS FIXES YOUR ERROR)
+                        # Safe handling
                         stage = item.get("stage")
                         problem = item.get("problem")
                         action = item.get("action")
                         tip = item.get("tip")
 
-                        # Handle both string and dict
                         stage_text = stage.get(lang, stage.get("English")) if isinstance(stage, dict) else stage
                         problem_text = problem.get(lang, problem.get("English")) if isinstance(problem, dict) else problem
                         action_text = action.get(lang, action.get("English")) if isinstance(action, dict) else action
                         tip_text = tip.get(lang, tip.get("English")) if isinstance(tip, dict) else tip
 
-                        st.markdown(f"""
-                        ---
-                        🌱 **{stage_text}**
+                        table_data.append({
+                            "Stage": stage_text,
+                            "Temp": item.get("temp", "-"),
+                            "Rainfall": item.get("rainfall", "-"),
+                            "Problem": problem_text,
+                            "Action": action_text,
+                            "Tip": tip_text
+                        })
 
-                        🌡 Temp: {item.get("temp","-")}
-                        🌧 Rainfall: {item.get("rainfall","-")}
+                    import pandas as pd
+                    df = pd.DataFrame(table_data)
 
-                        ⚠ Problem: {problem_text}
-                        ✅ Action: {action_text}
-                        💡 Tip: {tip_text}
-                        """)
+                    st.dataframe(df, use_container_width=True)
+
                 else:
                     st.warning("No calendar data available")
 
