@@ -1,47 +1,45 @@
+from gtts import gTTS
+import tempfile
 import streamlit as st
-import streamlit.components.v1 as components
 
 def speak(text, language="English"):
     try:
-        # 🚨 1. Check text
         if not text:
             return
 
-        # 🧠 2. Clean text
-        text = str(text).replace("\n", " ").replace('"', "'").strip()
+        text = str(text)
 
-        if not text:
+        # Clean text — keep language characters too
+        clean = ""
+        for char in text:
+            if char.isalnum() or char.isspace() or ord(char) > 127:
+                clean += char
+            else:
+                clean += " "
+
+        clean = clean.strip()
+
+        if not clean:
             return
 
-        # 🌐 3. Language mapping (natural voices)
         lang_map = {
-            "English": "en-IN",
-            "Hindi": "hi-IN",
-            "Kannada": "kn-IN",
-            "Tamil": "ta-IN",
-            "Telugu": "te-IN",
-            "Marathi": "mr-IN"
+            "English": ("en", "co.in"),
+            "Hindi":   ("hi", "co.in"),
+            "Kannada": ("kn", "co.in"),
+            "Tamil":   ("ta", "co.in"),
+            "Telugu":  ("te", "co.in"),
+            "Marathi": ("mr", "co.in"),
         }
 
-        lang_code = lang_map.get(language, "en-IN")
+        lang_code, tld = lang_map.get(language, ("en", "co.in"))
 
-        # 🎤 4. Browser Speech (BEST QUALITY)
-        js_code = f"""
-        <script>
-        var msg = new SpeechSynthesisUtterance("{text}");
-        msg.lang = "{lang_code}";
-        msg.rate = 1;
-        msg.pitch = 1;
+        tts = gTTS(text=clean, lang=lang_code, tld=tld, slow=False)
 
-        // Stop previous speech
-        window.speechSynthesis.cancel();
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as f:
+            fname = f.name
 
-        // Speak
-        window.speechSynthesis.speak(msg);
-        </script>
-        """
-
-        components.html(js_code, height=0)
+        tts.save(fname)
+        st.audio(fname, autoplay=True)
 
     except Exception as e:
         st.error(f"Speech error: {e}")
