@@ -4,7 +4,7 @@ from groq import Groq
 import streamlit as st
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
-SYSTEM_PROMPT = """You are FarmGPT, a friendly expert agricultural 
+SYSTEM_PROMPT = """You are Dhara-AI, a friendly expert agricultural 
 advisor for Indian farmers. When a farmer describes a crop problem, 
 always respond in this exact format:
 

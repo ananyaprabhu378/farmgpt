@@ -17,7 +17,7 @@ if "user_input" not in st.session_state:
     st.session_state.user_input = ""
 
 # ── Page Config (MUST be first Streamlit call) ────────────
-st.set_page_config(page_title="FarmGPT 🌾", page_icon="🌾", layout="wide")
+st.set_page_config(page_title="Dhara-AI 🌾", page_icon="🌾", layout="wide")
 
 # ── LOGIN SYSTEM ─────────────────────
 
@@ -25,7 +25,7 @@ if "user" not in st.session_state:
     st.session_state.user = None
 
 if st.session_state.user is None:
-    st.title("🔐 Login to FarmGPT")
+    st.title("🔐 Login to Dhara-AI")
 
     tab1, tab2 = st.tabs(["Login", "Signup"])
 
@@ -376,7 +376,7 @@ LANGUAGE_CODES = {
 
 UI_TEXT = {
     "English": {
-        "title": "🌾 FarmGPT – AI Advisory Assistant",
+        "title": "🌾 Dhara-AI – AI Advisory Assistant",
         "caption": "Your smart farming companion — ask anything about your crops!",
         "speak_btn": "🎙️ Click to Speak",
         "listening": "Listening... Speak now!",
@@ -616,7 +616,7 @@ background:rgba(74,222,128,0.08);
 border:1px solid rgba(74,222,128,0.2);
 margin-bottom:12px;
 ">
-<h3 style="margin:0;color:#4ade80;">🌾 FarmGPT</h3>
+<h3 style="margin:0;color:#4ade80;">🌾 Dhara-AI</h3>
 <p style="margin:2px 0 0;font-size:13px;color:#86efac;">
 {ui["caption"]}
 </p>
