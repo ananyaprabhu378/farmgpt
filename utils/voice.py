@@ -4,39 +4,42 @@ import streamlit as st
 
 def speak(text, language="English"):
     try:
-        # 🚨 1. Check if text exists
         if not text:
             return
 
-        # 🧠 2. Convert to string safely
-        text = str(text).strip()
+        text = str(text)
 
-        if not text:
+        # Clean text — keep language characters too
+        clean = ""
+        for char in text:
+            if char.isalnum() or char.isspace() or ord(char) > 127:
+                clean += char
+            else:
+                clean += " "
+
+        clean = clean.strip()
+
+        if not clean:
             return
 
-        # 🧼 3. Clean text (VERY IMPORTANT)
-        # Only remove newlines, keep all characters (for Kannada/Hindi)
-        clean = text.replace("\n", " ").strip()
+        lang_map = {
+            "English": ("en", "co.in"),
+            "Hindi":   ("hi", "co.in"),
+            "Kannada": ("kn", "co.in"),
+            "Tamil":   ("ta", "co.in"),
+            "Telugu":  ("te", "co.in"),
+            "Marathi": ("mr", "co.in"),
+        }
 
-        # 🎯 4. FORCE ENGLISH VOICE (fix foreign accent issue)
-        lang_code = "en"
+        lang_code, tld = lang_map.get(language, ("en", "co.in"))
 
-        # 🎤 5. Generate speech
-        tts = gTTS(
-            text=clean,
-            lang=lang_code,
-            tld="co.in",   # Indian voice server
-            slow=False
-        )
+        tts = gTTS(text=clean, lang=lang_code, tld=tld, slow=False)
 
-        # 💾 6. Save audio file
         with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as f:
             fname = f.name
 
         tts.save(fname)
-
-        # 🔊 7. Play in Streamlit
-        st.audio(fname)
+        st.audio(fname, autoplay=True)
 
     except Exception as e:
         st.error(f"Speech error: {e}")
