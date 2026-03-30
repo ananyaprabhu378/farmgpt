@@ -702,11 +702,24 @@ with st.sidebar:
 
                 # 📊 TABLE (REAL DATA)
                 import pandas as pd
-                df = pd.DataFrame(crop_info.get("calendar", []))
+                
+                lang = st.session_state.language
 
-                if not df.empty:
-                    st.dataframe(df, use_container_width=True)
-    
+                calendar_data = crop_info.get("calendar", [])
+
+                if calendar_data:
+                    for item in calendar_data:
+                        st.markdown(f"""
+                        ---
+                        🌱 **{item["stage"].get(lang, item["stage"]["English"])}**
+
+                        🌡 **Temp:** {item["temp"]}  
+                        🌧 **Rainfall:** {item["rainfall"]}  
+
+                        ⚠ **Problem:** {item["problem"].get(lang, item["problem"]["English"])}  
+                        ✅ **Action:** {item["action"].get(lang, item["action"]["English"])}  
+                        💡 **Tip:** {item["tip"].get(lang, item["tip"]["English"])}  
+                        """)
                 else:
                     st.warning("No calendar data available")
 

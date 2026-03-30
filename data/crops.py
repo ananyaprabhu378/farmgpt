@@ -4,132 +4,146 @@ CROP_DATA = {
 "Tomato": {
     "duration": "90–110 days",
     "cycles_per_year": 2,
-    "seasons": ["Kharif (Jun–Jul)", "Rabi (Oct–Nov)"],
-    "stages": [
-        {"stage": "Nursery", "days": "0–25", "details": "Seed germination & seedling growth"},
-        {"stage": "Transplanting", "days": "25–30", "details": "Shift to main field"},
-        {"stage": "Vegetative", "days": "30–50", "details": "Leaf and stem growth"},
-        {"stage": "Flowering", "days": "50–70", "details": "Flower initiation"},
-        {"stage": "Fruiting", "days": "70–90", "details": "Fruit formation"},
-        {"stage": "Harvest", "days": "90–110", "details": "Harvest every 3–4 days"},
-    ],
+    "water": "600–800 mm",
+    "soil": "Loamy soil (pH 6–7)",
+
     "calendar": [
-        {"month":"Jun","activity":"Nursery","temp":"25–32°C","rainfall":"High","tip":"Raised beds","alert":"Damping off"},
-        {"month":"Jul","activity":"Transplant","temp":"24–30°C","rainfall":"High","tip":"Spacing 60x45 cm","alert":"Blight"},
-        {"month":"Aug","activity":"Growth","temp":"24–30°C","rainfall":"High","tip":"Staking","alert":"Fungal risk"},
-        {"month":"Sep","activity":"Flowering","temp":"22–28°C","rainfall":"Medium","tip":"NPK spray","alert":"Fruit borer"},
-        {"month":"Oct","activity":"Fruiting","temp":"20–28°C","rainfall":"Low","tip":"Add potassium","alert":"None"},
-        {"month":"Nov","activity":"Harvest","temp":"18–26°C","rainfall":"Low","tip":"Frequent picking","alert":"None"},
-    ],
-    "insights": {
-        "water": "600–800 mm",
-        "soil": "Loamy, pH 6–7",
-        "yield": "25–30 t/ha"
-    }
+        {
+            "month": "Jun",
+            "stage": {"English":"Nursery","Kannada":"ನರ್ಸರಿ","Hindi":"नर्सरी"},
+            "temp": "25–32°C",
+            "rainfall": "High",
+
+            "problem": {"English":"Damping-off disease","Kannada":"ರೋಗ ಅಪಾಯ","Hindi":"रोग का खतरा"},
+            "action": {"English":"Use raised beds + fungicide","Kannada":"ಎತ್ತರದ ಬೆಡ್ ಬಳಸಿ","Hindi":"ऊँचे बेड + फफूंदनाशक"},
+            "tip": {"English":"Ensure drainage","Kannada":"ನೀರಿನ ಹರಿವು","Hindi":"जल निकासी रखें"}
+        },
+        {
+            "month": "Sep",
+            "stage": {"English":"Flowering","Kannada":"ಹೂ ಬೀಳು","Hindi":"फूल आना"},
+            "temp": "22–28°C",
+            "rainfall": "Medium",
+
+            "problem": {"English":"Flower drop","Kannada":"ಹೂ ಬೀಳುವುದು","Hindi":"फूल गिरना"},
+            "action": {"English":"Spray NPK","Kannada":"ಎನ್‌ಪಿಕೆ ಸ್ಪ್ರೇ","Hindi":"एनपीके स्प्रे"},
+            "tip": {"English":"Regular watering","Kannada":"ನಿಯಮಿತ ನೀರು","Hindi":"नियमित सिंचाई"}
+        }
+    ]
 },
 
 # 🧅 ONION
 "Onion": {
     "duration": "120–150 days",
     "cycles_per_year": 2,
-    "seasons": ["Kharif", "Rabi"],
-    "stages": [
-        {"stage":"Nursery","days":"0–45","details":"Seedling stage"},
-        {"stage":"Transplant","days":"45–60","details":"Shift to field"},
-        {"stage":"Vegetative","days":"60–90","details":"Leaf growth"},
-        {"stage":"Bulbing","days":"90–120","details":"Bulb formation"},
-        {"stage":"Maturity","days":"120–150","details":"Top falling & harvest"},
-    ],
+    "water": "350–550 mm",
+    "soil": "Sandy loam",
+
     "calendar": [
-        {"month":"Jun","activity":"Transplant","temp":"25–32°C","rainfall":"High","tip":"Good drainage","alert":"Rot"},
-        {"month":"Jul","activity":"Growth","temp":"24–30°C","rainfall":"High","tip":"Nitrogen dose","alert":"Purple blotch"},
-        {"month":"Aug","activity":"Bulbing","temp":"24–30°C","rainfall":"Medium","tip":"Reduce irrigation","alert":"Blight"},
-        {"month":"Sep","activity":"Maturity","temp":"22–28°C","rainfall":"Low","tip":"Stop watering","alert":"None"},
-        {"month":"Oct","activity":"Harvest","temp":"20–28°C","rainfall":"Low","tip":"Dry bulbs","alert":"None"},
-    ],
-    "insights": {
-        "water": "350–550 mm",
-        "soil": "Well-drained sandy loam",
-        "yield": "20–25 t/ha"
-    }
+        {
+            "month": "Nov",
+            "stage": {"English":"Transplant","Kannada":"ನೆಡುವುದು","Hindi":"रोपाई"},
+            "temp": "18–25°C",
+            "rainfall": "Low",
+
+            "problem": {"English":"Root rot","Kannada":"ಮೂಲ ಕುಲುಮೆ","Hindi":"जड़ सड़न"},
+            "action": {"English":"Avoid excess water","Kannada":"ಹೆಚ್ಚು ನೀರು ಬೇಡ","Hindi":"अधिक पानी न दें"},
+            "tip": {"English":"Proper spacing","Kannada":"ಸರಿಯಾದ ಅಂತರ","Hindi":"सही दूरी"}
+        }
+    ]
 },
 
 # 🥔 POTATO
 "Potato": {
     "duration": "90–120 days",
     "cycles_per_year": 2,
-    "seasons": ["Rabi dominant"],
-    "stages": [
-        {"stage":"Planting","days":"0–10","details":"Seed tuber planting"},
-        {"stage":"Vegetative","days":"10–40","details":"Leaf growth"},
-        {"stage":"Tuber initiation","days":"40–60","details":"Tuber starts forming"},
-        {"stage":"Bulking","days":"60–90","details":"Tuber enlargement"},
-        {"stage":"Harvest","days":"90–120","details":"Harvest mature tubers"},
-    ],
+    "water": "500–700 mm",
+    "soil": "Loose sandy soil",
+
     "calendar": [
-        {"month":"Oct","activity":"Planting","temp":"20–25°C","rainfall":"Low","tip":"Use treated tubers","alert":"None"},
-        {"month":"Nov","activity":"Growth","temp":"15–25°C","rainfall":"Low","tip":"Apply NPK","alert":"Blight"},
-        {"month":"Dec","activity":"Bulking","temp":"10–20°C","rainfall":"Low","tip":"Irrigate regularly","alert":"Late blight"},
-        {"month":"Jan","activity":"Harvest","temp":"10–20°C","rainfall":"Low","tip":"Cure before storage","alert":"None"},
-    ],
-    "insights": {
-        "water": "500–700 mm",
-        "soil": "Loose sandy loam",
-        "yield": "20–30 t/ha"
-    }
+        {
+            "month": "Dec",
+            "stage": {"English":"Tuber formation","Kannada":"ಟ್ಯೂಬರ್ ರೂಪ","Hindi":"कंद बनना"},
+            "temp": "10–20°C",
+            "rainfall": "Low",
+
+            "problem": {"English":"Late blight","Kannada":"ರೋಗ","Hindi":"रोग"},
+            "action": {"English":"Apply fungicide","Kannada":"ಫಂಗಿಸೈಡ್ ಬಳಸಿ","Hindi":"फफूंदनाशक"},
+            "tip": {"English":"Regular irrigation","Kannada":"ನೀರಾವರಿ","Hindi":"सिंचाई"}
+        }
+    ]
 },
 
 # 🍆 BRINJAL
 "Brinjal": {
-    "duration": "150–180 days",
+    "duration": "120–150 days",
     "cycles_per_year": 2,
-    "seasons": ["Year-round (South India)"],
-    "stages": [
-        {"stage":"Nursery","days":"0–30","details":"Seedling stage"},
-        {"stage":"Transplant","days":"30–40","details":"Shift to field"},
-        {"stage":"Vegetative","days":"40–80","details":"Plant growth"},
-        {"stage":"Flowering","days":"80–100","details":"Flower formation"},
-        {"stage":"Fruiting","days":"100–150","details":"Fruit development"},
-        {"stage":"Harvest","days":"150+","details":"Continuous harvest"},
-    ],
+    "water": "600–1000 mm",
+    "soil": "Fertile loamy soil",
+
     "calendar": [
-        {"month":"Jun","activity":"Transplant","temp":"25–32°C","rainfall":"High","tip":"Mulching","alert":"Wilt"},
-        {"month":"Jul","activity":"Growth","temp":"24–30°C","rainfall":"High","tip":"Top dressing","alert":"Borer"},
-        {"month":"Aug","activity":"Flowering","temp":"24–30°C","rainfall":"High","tip":"Micronutrients","alert":"Blight"},
-        {"month":"Sep","activity":"Fruiting","temp":"22–28°C","rainfall":"Medium","tip":"Regular harvest","alert":"None"},
-    ],
-    "insights": {
-        "water": "600–1000 mm",
-        "soil": "Fertile loamy soil",
-        "yield": "25–35 t/ha"
-    }
+        {
+            "month": "Aug",
+            "stage": {"English":"Growth","Kannada":"ಬೆಳವಣಿಗೆ","Hindi":"विकास"},
+            "temp": "24–30°C",
+            "rainfall": "Medium",
+
+            "problem": {"English":"Borer pest","Kannada":"ಹುಳು","Hindi":"कीट"},
+            "action": {"English":"Use pesticide spray","Kannada":"ಔಷಧಿ ಸ್ಪ್ರೇ","Hindi":"कीटनाशक"},
+            "tip": {"English":"Check plants regularly","Kannada":"ನಿರಂತರ ಪರಿಶೀಲನೆ","Hindi":"नियमित जांच"}
+        }
+    ]
 },
 
 # 🌶️ CHILLI
 "Chilli": {
     "duration": "150–200 days",
     "cycles_per_year": 1,
-    "seasons": ["Kharif", "Rabi"],
-    "stages": [
-        {"stage":"Nursery","days":"0–40","details":"Seedling stage"},
-        {"stage":"Transplant","days":"40–50","details":"Shift to field"},
-        {"stage":"Vegetative","days":"50–90","details":"Plant growth"},
-        {"stage":"Flowering","days":"90–110","details":"Flowering begins"},
-        {"stage":"Fruiting","days":"110–150","details":"Fruit growth"},
-        {"stage":"Harvest","days":"150+","details":"Green/red harvest"},
-    ],
+    "water": "600–800 mm",
+    "soil": "Well-drained soil",
+
     "calendar": [
-        {"month":"Jun","activity":"Transplant","temp":"25–32°C","rainfall":"High","tip":"Avoid waterlogging","alert":"Rot"},
-        {"month":"Jul","activity":"Growth","temp":"24–30°C","rainfall":"High","tip":"Nitrogen dose","alert":"Anthracnose"},
-        {"month":"Aug","activity":"Flowering","temp":"24–30°C","rainfall":"High","tip":"Foliar spray","alert":"Fruit rot"},
-        {"month":"Sep","activity":"Fruiting","temp":"22–28°C","rainfall":"Medium","tip":"Harvest regularly","alert":"Thrips"},
-        {"month":"Oct","activity":"Harvest","temp":"20–28°C","rainfall":"Low","tip":"Pick mature fruits","alert":"None"},
-    ],
-    "insights": {
-        "water": "600–800 mm",
-        "soil": "Well-drained soil",
-        "yield": "2–3 t/ha dry"
-    }
+        {
+            "month": "Sep",
+            "stage": {"English":"Fruiting","Kannada":"ಹಣ್ಣು ಬೆಳವಣಿಗೆ","Hindi":"फल बनना"},
+            "temp": "22–28°C",
+            "rainfall": "Medium",
+
+            "problem": {"English":"Fruit rot","Kannada":"ಹಣ್ಣು ಕುಲುಮೆ","Hindi":"फल सड़ना"},
+            "action": {"English":"Reduce watering","Kannada":"ನೀರು ಕಡಿಮೆ","Hindi":"पानी कम करें"},
+            "tip": {"English":"Ensure sunlight","Kannada":"ಸೂರ್ಯ ಬೆಳಕು","Hindi":"धूप दें"}
+        }
+    ]
+},
+
+# 🌵 DRAGON FRUIT (ADVANCED 🔥)
+"Dragon Fruit": {
+    "duration": "1 year",
+    "cycles_per_year": 2,
+    "water": "600–1300 mm",
+    "soil": "Well-drained sandy soil",
+
+    "calendar": [
+        {
+            "month": "Apr",
+            "stage": {"English":"Flowering","Kannada":"ಹೂ ಬೀಳು","Hindi":"फूल आना"},
+            "temp": "25–35°C",
+            "rainfall": "Low",
+
+            "problem": {"English":"Flower drop","Kannada":"ಹೂ ಬೀಳುವುದು","Hindi":"फूल गिरना"},
+            "action": {"English":"Maintain moisture","Kannada":"ನೀರಿನ ಸಮತೋಲನ","Hindi":"नमी बनाए रखें"},
+            "tip": {"English":"Use mulch","Kannada":"ಮಲ್ಚಿಂಗ್","Hindi":"मल्चिंग"}
+        },
+        {
+            "month": "Aug",
+            "stage": {"English":"Harvest","Kannada":"ಕೊಯ್ಲು","Hindi":"कटाई"},
+            "temp": "25–35°C",
+            "rainfall": "Medium",
+
+            "problem": {"English":"Fruit rot","Kannada":"ಹಣ್ಣು ಕುಲುಮೆ","Hindi":"फल सड़ना"},
+            "action": {"English":"Harvest early","Kannada":"ಬೆಳಗ್ಗೆ ಕೊಯ್ಲು","Hindi":"सुबह कटाई"},
+            "tip": {"English":"Avoid excess water","Kannada":"ನೀರು ಕಡಿಮೆ","Hindi":"पानी कम करें"}
+        }
+    ]
 }
 
 }
