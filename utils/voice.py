@@ -37,10 +37,10 @@ def speak(text, language="English"):
             "Marathi": "mr",
         }
 
-        lang_code = lang_map.get(language, "en")
+        lang_code = "en"
 
         # 🎤 Generate speech
-        tts = gTTS(text=clean, lang=lang_code, tld="co.in")
+        tts = gTTS(text=clean, lang="en", tld="co.in")
 
         with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as f:
             fname = f.name
